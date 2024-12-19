@@ -20,3 +20,16 @@ clock = pygame.time.Clock()
 
 # Font for displaying text
 font = pygame.font.Font(None, 36)
+
+
+# Fighter class
+class Fighter:
+    def _init_(self, x, y, color):
+        self.x = x
+        self.y = y
+        self.color = color
+        self.hp = 100
+        self.move = None
+        self.cooldown = 0  # Cooldown between moves
+
+    
