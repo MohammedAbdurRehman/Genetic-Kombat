@@ -32,4 +32,8 @@ class Fighter:
         self.move = None
         self.cooldown = 0  # Cooldown between moves
 
-    
+    def draw(self):
+        pygame.draw.rect(screen, self.color, (self.x, self.y, 50, 100))
+        if self.move:
+            text = font.render(self.move, True, BLACK)
+            screen.blit(text, (self.x, self.y - 30))
