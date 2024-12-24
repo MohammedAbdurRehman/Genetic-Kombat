@@ -21,7 +21,19 @@ clock = pygame.time.Clock()
 # Font for displaying text
 font = pygame.font.Font(None, 36)
 
+# Log file setup
+LOG_FILE = "ga_ai_moves_log.txt"
+with open(LOG_FILE, "w") as log:
+    log.write("AI Move Strategy Optimization Log\n\n")
 
+# Genetic Algorithm Parameters
+POPULATION_SIZE = 10  # Number of move strategies
+MOVE_SEQUENCE_LENGTH = 5  # Moves per strategy
+GENERATIONS = 20  # Number of generations
+MUTATION_RATE = 0.2  # Probability of mutation per move
+
+# Moves
+MOVES = ["Punch", "Kick", "Block"]
 # Fighter class
 class Fighter:
     def _init_(self, x, y, color):
