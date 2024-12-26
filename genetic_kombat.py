@@ -198,3 +198,7 @@ while run:
         player.perform_move("Kick")
     elif keys[pygame.K_d] and player.cooldown == 0:  # Block
         player.perform_move("Block")
+    elif keys[pygame.K_q] and player.cooldown == 0:  # Uppercut
+        player.perform_move("Uppercut")
+    elif keys[pygame.K_w] and player.cooldown == 0:  # Roundhouse Kick
+        player.perform_move("Roundhouse Kick")
