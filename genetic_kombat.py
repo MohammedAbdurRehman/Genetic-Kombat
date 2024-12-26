@@ -149,3 +149,18 @@ def genetic_algorithm_with_diversity():
         # Selection
         top_strategies = select_top_strategies(population, fitnesses)        
 
+        # Crossover and Mutation with dynamic mutation rate
+        new_population = top_strategies[:]
+        while len(new_population) < POPULATION_SIZE:
+            parent1, parent2 = random.sample(top_strategies, 2)
+            child = crossover(parent1, parent2)
+            mutation_rate = dynamic_mutation_rate(generation, GENERATIONS)
+            child = [
+                random.choice(MOVES) if random.random() < mutation_rate else move
+                for move in child
+            ]
+            new_population.append(child)
+
+        population = new_population
+
+    return best_strategy
