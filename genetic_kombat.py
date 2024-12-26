@@ -189,3 +189,12 @@ while run:
 
     # Display HP
     display_hp()
+
+    # Player move input
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_a] and player.cooldown == 0:  # Punch
+        player.perform_move("Punch")
+    elif keys[pygame.K_s] and player.cooldown == 0:  # Kick
+        player.perform_move("Kick")
+    elif keys[pygame.K_d] and player.cooldown == 0:  # Block
+        player.perform_move("Block")
