@@ -208,3 +208,8 @@ while run:
         player.perform_move("Grab")
     elif keys[pygame.K_t] and player.cooldown == 0:  # Dodge
         player.perform_move("Dodge")
+
+    # AI move logic (loop through best sequence)
+    if ai.cooldown == 0:
+        ai.perform_move(best_move_sequence[ai_move_index % len(best_move_sequence)])
+        ai_move_index += 1
