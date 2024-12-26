@@ -172,3 +172,10 @@ ai = Fighter(WIDTH - 300, HEIGHT - 200, RED)
 # Run Genetic Algorithm to find the best move sequence
 best_move_sequence = genetic_algorithm_with_diversity()
 ai_move_index = 0
+
+# Game loop
+run = True
+while run:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:  # Close window event
+            run = False
