@@ -143,5 +143,7 @@ def genetic_algorithm_with_diversity():
         with open(LOG_FILE, "a") as log:
             log.write(f"Generation {generation + 1}: Best Fitness = {best_fitness}\n")
             log.write(f"Best Strategy: {best_strategy}\n\n")
+
+        print(f"Generation {generation + 1}: Best Fitness = {best_fitness}")
         
 
