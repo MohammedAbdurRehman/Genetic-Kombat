@@ -33,7 +33,12 @@ GENERATIONS = 20  # Number of generations
 MUTATION_RATE = 0.2  # Probability of mutation per move
 
 # Moves
-MOVES = ["Punch", "Kick", "Block"]
+MOVES = [
+    "Punch", "Kick", "Block", "Uppercut", "Roundhouse Kick", "Low Kick",
+    "Grab", "Dodge", "Spin Kick", "Elbow Strike", "Knee Strike", "Backflip Kick",
+    "Counter", "Feint Attack", "Parry", "Rolling Attack"
+]
+
 # Fighter class
 class Fighter:
     def _init_(self, x, y, color):
