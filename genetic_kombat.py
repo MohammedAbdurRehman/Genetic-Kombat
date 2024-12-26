@@ -98,6 +98,11 @@ class Fighter:
     
         return total_damage - repetition_penalty
 
+    # Diversity penalty: Calculate similarity between strategies
+    def calculate_similarity(strategy1, strategy2):
+        return sum(1 for a, b in zip(strategy1, strategy2) if a == b) / len(strategy1)
+
+
 
 
         
