@@ -179,3 +179,13 @@ while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:  # Close window event
             run = False
+
+    # Clear the screen
+    screen.fill(WHITE)
+
+    # Draw the fighters
+    player.draw()
+    ai.draw()
+
+    # Display HP
+    display_hp()
