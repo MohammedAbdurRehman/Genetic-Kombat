@@ -28,7 +28,7 @@ with open(LOG_FILE, "w") as log:
 
 # Genetic Algorithm Parameters
 POPULATION_SIZE = 10  # Number of move strategies
-MOVE_SEQUENCE_LENGTH = 5  # Moves per strategy
+MOVE_SEQUENCE_LENGTH = 12  # Moves per strategy
 GENERATIONS = 20  # Number of generations
 MUTATION_RATE = 0.2  # Probability of mutation per move
 
