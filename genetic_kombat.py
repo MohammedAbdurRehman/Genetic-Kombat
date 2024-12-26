@@ -58,3 +58,12 @@ class Fighter:
         if self.cooldown == 0:
             self.move = move
             self.cooldown = 30  # Add cooldown to prevent spamming moves
+
+# Display HP function
+    def display_hp():
+        player_hp_text = font.render(f"Player HP: {player.hp}", True, BLUE)
+        ai_hp_text = font.render(f"AI HP: {ai.hp}", True, RED)
+        screen.blit(player_hp_text, (50, 50))
+        screen.blit(ai_hp_text, (WIDTH - 200, 50))
+        
+
