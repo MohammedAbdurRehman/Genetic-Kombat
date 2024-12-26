@@ -116,5 +116,7 @@ def evaluate_fitness_with_diversity(strategy, population):
 
 # Generate initial population
 def generate_population():
+    return [[random.choice(MOVES) for _ in range(MOVE_SEQUENCE_LENGTH)] for _ in range(POPULATION_SIZE)]
+
         
 
