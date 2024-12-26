@@ -128,6 +128,9 @@ def crossover(parent1, parent2):
     split_point = random.randint(1, MOVE_SEQUENCE_LENGTH - 1)
     return parent1[:split_point] + parent2[split_point:]
 
+# Adjust mutation rate dynamically
+def dynamic_mutation_rate(current_generation, total_generations):
+
 
         
 
