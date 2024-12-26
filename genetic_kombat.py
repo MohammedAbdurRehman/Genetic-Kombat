@@ -60,59 +60,59 @@ class Fighter:
             self.cooldown = 30  # Add cooldown to prevent spamming moves
 
 # Display HP function
-    def display_hp():
-        player_hp_text = font.render(f"Player HP: {player.hp}", True, BLUE)
-        ai_hp_text = font.render(f"AI HP: {ai.hp}", True, RED)
-        screen.blit(player_hp_text, (50, 50))
-        screen.blit(ai_hp_text, (WIDTH - 200, 50))
+def display_hp():
+    player_hp_text = font.render(f"Player HP: {player.hp}", True, BLUE)
+    ai_hp_text = font.render(f"AI HP: {ai.hp}", True, RED)
+    screen.blit(player_hp_text, (50, 50))
+    screen.blit(ai_hp_text, (WIDTH - 200, 50))
 
     # Evaluate fitness of a move sequence
-    def evaluate_fitness(move_sequence):
-        temp_player = Fighter(200, HEIGHT - 200, BLUE)
-        temp_ai = Fighter(WIDTH - 300, HEIGHT - 200, RED)
-        total_damage = 0
-        last_move = None
-        repetition_penalty = 0
+def evaluate_fitness(move_sequence):
+    temp_player = Fighter(200, HEIGHT - 200, BLUE)
+    temp_ai = Fighter(WIDTH - 300, HEIGHT - 200, RED)
+    total_damage = 0
+    last_move = None
+    repetition_penalty = 0
     
-        for move in move_sequence:
-            temp_ai.perform_move(move)
+    for move in move_sequence:
+        temp_ai.perform_move(move)
             # Damage calculation
-            if move in ["Punch", "Low Kick"]:
-                total_damage += 10 if temp_player.move != "Block" else 0
-            elif move in ["Kick", "Roundhouse Kick", "Spin Kick"]:
-                total_damage += 15 if temp_player.move != "Block" else 0
-            elif move in ["Uppercut", "Elbow Strike"]:
-                total_damage += 20 if temp_player.move != "Block" else 0
-            elif move == "Grab":
-                total_damage += 25 if temp_player.move != "Dodge" else 0
-            elif move == "Backflip Kick":
-                total_damage += 30 if temp_player.move != "Counter" else 0
+        if move in ["Punch", "Low Kick"]:
+            total_damage += 10 if temp_player.move != "Block" else 0
+        elif move in ["Kick", "Roundhouse Kick", "Spin Kick"]:
+            total_damage += 15 if temp_player.move != "Block" else 0
+        elif move in ["Uppercut", "Elbow Strike"]:
+            total_damage += 20 if temp_player.move != "Block" else 0
+        elif move == "Grab":
+            total_damage += 25 if temp_player.move != "Dodge" else 0
+        elif move == "Backflip Kick":
+            total_damage += 30 if temp_player.move != "Counter" else 0
 
         # Penalize repeated moves
-            if move == last_move:
-                repetition_penalty += 5
-            last_move = move
+        if move == last_move:
+            repetition_penalty += 5
+        last_move = move
     
             # Random player move to simulate combat
-            temp_player.perform_move(random.choice(MOVES))
+        temp_player.perform_move(random.choice(MOVES))
     
-        return total_damage - repetition_penalty
+    return total_damage - repetition_penalty
 
     # Diversity penalty: Calculate similarity between strategies
-    def calculate_similarity(strategy1, strategy2):
-        return sum(1 for a, b in zip(strategy1, strategy2) if a == b) / len(strategy1)
+def calculate_similarity(strategy1, strategy2):
+    return sum(1 for a, b in zip(strategy1, strategy2) if a == b) / len(strategy1)
 
     # Evaluate fitness with diversity promotion
-    def evaluate_fitness_with_diversity(strategy, population):
-        fitness = evaluate_fitness(strategy)
-        diversity_penalty = 0
+def evaluate_fitness_with_diversity(strategy, population):
+    fitness = evaluate_fitness(strategy)
+    diversity_penalty = 0
     
-        for other_strategy in population:
-            similarity = calculate_similarity(strategy, other_strategy)
-            if similarity > 0.7:  # Threshold for similarity
-                diversity_penalty += similarity * 10  # Penalize similar strategies
+    for other_strategy in population:
+        similarity = calculate_similarity(strategy, other_strategy)
+        if similarity > 0.7:  # Threshold for similarity
+            diversity_penalty += similarity * 10  # Penalize similar strategies
     
-        return fitness - diversity_penalty
+    return fitness - diversity_penalty
 
 
         
