@@ -139,5 +139,7 @@ def genetic_algorithm_with_diversity():
         fitnesses = [evaluate_fitness_with_diversity(strategy, population) for strategy in population]
         best_fitness = max(fitnesses)
         best_strategy = population[fitnesses.index(best_fitness)]
+
+        with open(LOG_FILE, "a") as log:
         
 
