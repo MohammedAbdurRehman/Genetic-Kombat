@@ -65,5 +65,30 @@ class Fighter:
         ai_hp_text = font.render(f"AI HP: {ai.hp}", True, RED)
         screen.blit(player_hp_text, (50, 50))
         screen.blit(ai_hp_text, (WIDTH - 200, 50))
+
+    # Evaluate fitness of a move sequence
+    def evaluate_fitness(move_sequence):
+        temp_player = Fighter(200, HEIGHT - 200, BLUE)
+        temp_ai = Fighter(WIDTH - 300, HEIGHT - 200, RED)
+        total_damage = 0
+        last_move = None
+        repetition_penalty = 0
+    
+        for move in move_sequence:
+            temp_ai.perform_move(move)
+            # Damage calculation
+            if move in ["Punch", "Low Kick"]:
+                total_damage += 10 if temp_player.move != "Block" else 0
+            elif move in ["Kick", "Roundhouse Kick", "Spin Kick"]:
+                total_damage += 15 if temp_player.move != "Block" else 0
+            elif move in ["Uppercut", "Elbow Strike"]:
+                total_damage += 20 if temp_player.move != "Block" else 0
+            elif move == "Grab":
+                total_damage += 25 if temp_player.move != "Dodge" else 0
+            elif move == "Backflip Kick":
+                total_damage += 30 if temp_player.move != "Counter" else 0
+
+
+
         
 
