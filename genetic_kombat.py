@@ -145,5 +145,7 @@ def genetic_algorithm_with_diversity():
             log.write(f"Best Strategy: {best_strategy}\n\n")
 
         print(f"Generation {generation + 1}: Best Fitness = {best_fitness}")
-        
+
+        # Selection
+        top_strategies = select_top_strategies(population, fitnesses)        
 
