@@ -164,3 +164,7 @@ def genetic_algorithm_with_diversity():
         population = new_population
 
     return best_strategy
+
+# Initialize player and AI
+player = Fighter(200, HEIGHT - 200, BLUE)
+ai = Fighter(WIDTH - 300, HEIGHT - 200, RED)
