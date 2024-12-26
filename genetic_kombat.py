@@ -134,5 +134,8 @@ def dynamic_mutation_rate(current_generation, total_generations):
 
 def genetic_algorithm_with_diversity():
     population = generate_population()
+
+    for generation in range(GENERATIONS):
+        fitnesses = [evaluate_fitness_with_diversity(strategy, population) for strategy in population]
         
 
