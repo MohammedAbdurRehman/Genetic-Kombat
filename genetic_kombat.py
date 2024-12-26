@@ -123,6 +123,9 @@ def select_top_strategies(population, fitnesses):
     sorted_population = [x for _, x in sorted(zip(fitnesses, population), reverse=True)]
     return sorted_population[: POPULATION_SIZE // 2]
 
+# Crossover: Create offspring by combining two strategies
+def crossover(parent1, parent2):
+
 
         
 
