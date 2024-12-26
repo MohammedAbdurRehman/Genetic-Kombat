@@ -114,6 +114,7 @@ def evaluate_fitness_with_diversity(strategy, population):
     
     return fitness - diversity_penalty
 
-
+# Generate initial population
+def generate_population():
         
 
