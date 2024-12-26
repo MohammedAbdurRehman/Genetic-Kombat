@@ -88,6 +88,16 @@ class Fighter:
             elif move == "Backflip Kick":
                 total_damage += 30 if temp_player.move != "Counter" else 0
 
+        # Penalize repeated moves
+            if move == last_move:
+                repetition_penalty += 5
+            last_move = move
+    
+            # Random player move to simulate combat
+            temp_player.perform_move(random.choice(MOVES))
+    
+        return total_damage - repetition_penalty
+
 
 
         
