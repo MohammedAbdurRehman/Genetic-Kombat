@@ -102,7 +102,17 @@ class Fighter:
     def calculate_similarity(strategy1, strategy2):
         return sum(1 for a, b in zip(strategy1, strategy2) if a == b) / len(strategy1)
 
-
+    # Evaluate fitness with diversity promotion
+    def evaluate_fitness_with_diversity(strategy, population):
+        fitness = evaluate_fitness(strategy)
+        diversity_penalty = 0
+    
+        for other_strategy in population:
+            similarity = calculate_similarity(strategy, other_strategy)
+            if similarity > 0.7:  # Threshold for similarity
+                diversity_penalty += similarity * 10  # Penalize similar strategies
+    
+        return fitness - diversity_penalty
 
 
         
