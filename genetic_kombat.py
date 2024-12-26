@@ -132,5 +132,7 @@ def crossover(parent1, parent2):
 def dynamic_mutation_rate(current_generation, total_generations):
     return MUTATION_RATE * (1 - current_generation / total_generations)
 
+def genetic_algorithm_with_diversity():
+    population = generate_population()
         
 
