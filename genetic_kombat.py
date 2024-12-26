@@ -120,6 +120,9 @@ def generate_population():
 
 # Selection: Choose top strategies based on fitness
 def select_top_strategies(population, fitnesses):
+    sorted_population = [x for _, x in sorted(zip(fitnesses, population), reverse=True)]
+    return sorted_population[: POPULATION_SIZE // 2]
+
 
         
 
