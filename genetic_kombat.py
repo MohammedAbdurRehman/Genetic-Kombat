@@ -168,3 +168,7 @@ def genetic_algorithm_with_diversity():
 # Initialize player and AI
 player = Fighter(200, HEIGHT - 200, BLUE)
 ai = Fighter(WIDTH - 300, HEIGHT - 200, RED)
+
+# Run Genetic Algorithm to find the best move sequence
+best_move_sequence = genetic_algorithm_with_diversity()
+ai_move_index = 0
