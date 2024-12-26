@@ -39,9 +39,8 @@ MOVES = [
     "Counter", "Feint Attack", "Parry", "Rolling Attack"
 ]
 
-# Fighter class
 class Fighter:
-    def _init_(self, x, y, color):
+    def __init__(self, x, y, color):
         self.x = x
         self.y = y
         self.color = color
@@ -54,3 +53,8 @@ class Fighter:
         if self.move:
             text = font.render(self.move, True, BLACK)
             screen.blit(text, (self.x, self.y - 30))
+
+    def perform_move(self, move):
+        if self.cooldown == 0:
+            self.move = move
+            self.cooldown = 30  # Add cooldown to prevent spamming moves
