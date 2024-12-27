@@ -240,3 +240,9 @@ while run:
 # Reset moves after resolution
         player.move = None
         ai.move = None
+# Cooldowns for player and AI (ensures they can't spam moves)
+    if player.cooldown > 0:
+        player.cooldown -= 1
+    if ai.cooldown > 0:
+        ai.cooldown -= 1
+
