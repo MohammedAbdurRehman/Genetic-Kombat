@@ -237,3 +237,6 @@ while run:
             player.hp -= 25
         if ai.move == "Backflip Kick" and player.move != "Counter":
             player.hp -= 30
+# Reset moves after resolution
+        player.move = None
+        ai.move = None
