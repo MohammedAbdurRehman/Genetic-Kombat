@@ -51,7 +51,7 @@ class Fighter:
     def draw(self):
         pygame.draw.rect(screen, self.color, (self.x, self.y, 50, 100))
         if self.move:
-            text = font.render(self.move, True, BLACK)
+            text = font.render(self.move, True, WHITE)
             screen.blit(text, (self.x, self.y - 30))
 
     def perform_move(self, move):
@@ -182,7 +182,7 @@ while run:
             run = False
 
     # Clear the screen
-    screen.fill(WHITE)
+    screen.fill(BLACK)
 
     # Draw the fighters
     player.draw()
