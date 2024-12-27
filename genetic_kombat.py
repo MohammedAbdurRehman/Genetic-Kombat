@@ -249,4 +249,6 @@ while run:
 # Check for game over
     if player.hp <= 0 or ai.hp <= 0:
         run = False
-
+# Update the display
+    pygame.display.update()
+    clock.tick(30)
