@@ -66,17 +66,17 @@ def display_hp():
     screen.blit(player_hp_text, (50, 50))
     screen.blit(ai_hp_text, (WIDTH - 200, 50))
 
-    # Evaluate fitness of a move sequence
+# Evaluate fitness of a move sequence
 def evaluate_fitness(move_sequence):
     temp_player = Fighter(200, HEIGHT - 200, BLUE)
     temp_ai = Fighter(WIDTH - 300, HEIGHT - 200, RED)
     total_damage = 0
     last_move = None
     repetition_penalty = 0
-    
+
     for move in move_sequence:
         temp_ai.perform_move(move)
-            # Damage calculation
+        # Damage calculation
         if move in ["Punch", "Low Kick"]:
             total_damage += 10 if temp_player.move != "Block" else 0
         elif move in ["Kick", "Roundhouse Kick", "Spin Kick"]:
@@ -92,26 +92,26 @@ def evaluate_fitness(move_sequence):
         if move == last_move:
             repetition_penalty += 5
         last_move = move
-    
-            # Random player move to simulate combat
+
+        # Random player move to simulate combat
         temp_player.perform_move(random.choice(MOVES))
-    
+
     return total_damage - repetition_penalty
 
-    # Diversity penalty: Calculate similarity between strategies
+# Diversity penalty: Calculate similarity between strategies
 def calculate_similarity(strategy1, strategy2):
     return sum(1 for a, b in zip(strategy1, strategy2) if a == b) / len(strategy1)
 
-    # Evaluate fitness with diversity promotion
+# Evaluate fitness with diversity promotion
 def evaluate_fitness_with_diversity(strategy, population):
     fitness = evaluate_fitness(strategy)
     diversity_penalty = 0
-    
+
     for other_strategy in population:
         similarity = calculate_similarity(strategy, other_strategy)
         if similarity > 0.7:  # Threshold for similarity
             diversity_penalty += similarity * 10  # Penalize similar strategies
-    
+
     return fitness - diversity_penalty
 
 # Generate initial population
@@ -132,6 +132,7 @@ def crossover(parent1, parent2):
 def dynamic_mutation_rate(current_generation, total_generations):
     return MUTATION_RATE * (1 - current_generation / total_generations)
 
+# Genetic Algorithm with diversity
 def genetic_algorithm_with_diversity():
     population = generate_population()
 
@@ -147,7 +148,7 @@ def genetic_algorithm_with_diversity():
         print(f"Generation {generation + 1}: Best Fitness = {best_fitness}")
 
         # Selection
-        top_strategies = select_top_strategies(population, fitnesses)        
+        top_strategies = select_top_strategies(population, fitnesses)
 
         # Crossover and Mutation with dynamic mutation rate
         new_population = top_strategies[:]
@@ -214,7 +215,7 @@ while run:
         ai.perform_move(best_move_sequence[ai_move_index % len(best_move_sequence)])
         ai_move_index += 1
 
-# Resolve moves simultaneously
+    # Resolve moves simultaneously
     if player.move and ai.move:
         # Damage resolution
         if player.move in ["Punch", "Low Kick"] and ai.move != "Block":
@@ -237,19 +238,22 @@ while run:
             player.hp -= 25
         if ai.move == "Backflip Kick" and player.move != "Counter":
             player.hp -= 30
-# Reset moves after resolution
+
+        # Reset moves after resolution
         player.move = None
         ai.move = None
-# Cooldowns for player and AI (ensures they can't spam moves)
+
+    # Cooldowns for player and AI (ensures they can't spam moves)
     if player.cooldown > 0:
         player.cooldown -= 1
     if ai.cooldown > 0:
         ai.cooldown -= 1
-        
-# Check for game over
+
+    # Check for game over
     if player.hp <= 0 or ai.hp <= 0:
         run = False
-# Update the display
+
+    # Update the display
     pygame.display.update()
     clock.tick(30)
 
