@@ -213,3 +213,27 @@ while run:
     if ai.cooldown == 0:
         ai.perform_move(best_move_sequence[ai_move_index % len(best_move_sequence)])
         ai_move_index += 1
+
+# Resolve moves simultaneously
+    if player.move and ai.move:
+        # Damage resolution
+        if player.move in ["Punch", "Low Kick"] and ai.move != "Block":
+            ai.hp -= 10
+        if player.move in ["Kick", "Roundhouse Kick", "Spin Kick"] and ai.move != "Block":
+            ai.hp -= 15
+        if player.move in ["Uppercut", "Elbow Strike"] and ai.move != "Block":
+            ai.hp -= 20
+        if player.move == "Grab" and ai.move != "Dodge":
+            ai.hp -= 25
+        if player.move == "Backflip Kick" and ai.move != "Counter":
+            ai.hp -= 30
+        if ai.move in ["Punch", "Low Kick"] and player.move != "Block":
+            player.hp -= 10
+        if ai.move in ["Kick", "Roundhouse Kick", "Spin Kick"] and player.move != "Block":
+            player.hp -= 15
+        if ai.move in ["Uppercut", "Elbow Strike"] and player.move != "Block":
+            player.hp -= 20
+        if ai.move == "Grab" and player.move != "Dodge":
+            player.hp -= 25
+        if ai.move == "Backflip Kick" and player.move != "Counter":
+            player.hp -= 30
