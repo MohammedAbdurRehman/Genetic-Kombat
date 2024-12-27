@@ -245,4 +245,8 @@ while run:
         player.cooldown -= 1
     if ai.cooldown > 0:
         ai.cooldown -= 1
+        
+# Check for game over
+    if player.hp <= 0 or ai.hp <= 0:
+        run = False
 
