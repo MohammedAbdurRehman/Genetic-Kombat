@@ -1,61 +1,95 @@
-# Genetic-Kombat
+# Genetic-Kombat  
 
-#### **Abstract**
-This script simulates a Tekken-inspired AI battle where a player competes against an AI using moves such as Punch, Kick, and Block. The AI employs a Genetic Algorithm-like method to generate moves, showcasing a basic application of randomness in decision-making.
+## Abstract  
 
-#### **Problem Statement**
-The project aims to demonstrate the application of Genetic Algorithm principles to simulate decision-making in a game setting. The focus is on optimizing AI behavior for realistic interaction with a human player.
+This project simulates a Tekken-inspired combat game where a player competes against an AI in a fast-paced battle. The AI uses a **Genetic Algorithm (GA)** with diversity-driven optimization to generate move strategies, showcasing an innovative approach to game AI design.  
 
-#### **Proposed Solution**
-The script applies Genetic Algorithm principles by pre-generating a sequence of moves for the AI. These moves mimic natural selection and variability, enabling the AI to "evolve" its responses. The interaction between the player and the AI is resolved through a rule-based combat mechanism.
+## Problem Statement  
 
-#### **Methodology**
-1. **Initialization**: Pygame is initialized, and the game window, clock, and font are set up.
-2. **Fighter Class**:
-   - Handles the player's and AI's attributes, including health points (HP), current move, and cooldown.
-   - Includes methods for drawing fighters and performing moves.
-3. **AI Move Generation**:
-   - A function `generate_ai_moves` creates a list of 20 moves (`Punch`, `Kick`, or `Block`) for the AI using randomness, reflecting the Genetic Algorithm's stochastic nature.
-4. **Game Loop**:
-   - Processes player inputs and resolves moves.
-   - AI executes its pre-generated moves sequentially.
-   - Combat resolution reduces HP based on the move combination.
-   - The loop ends when either player's HP reaches 0.
-5. **Cooldown Mechanism**: Ensures that moves aren't spammed, creating a realistic combat dynamic.
+The goal of this project is to integrate Genetic Algorithm principles into an interactive combat game to simulate intelligent AI behavior. The focus is on evolving effective move strategies that challenge human players while promoting diverse gameplay.  
 
-#### **Results**
-The script implements a simple, turn-based combat system where:
-- Players interact with controls to perform moves.
-- AI uses pre-generated moves influenced by Genetic Algorithm principles.
-- The outcome (win, loss, draw) is determined based on remaining HP.
+## Proposed Solution  
 
-#### **Code Highlights**
-- **Player Input**: Players use keyboard keys (`A` for Punch, `S` for Kick, `D` for Block) to attack or defend.
-- **AI Logic**: AI moves are chosen from a pre-defined list generated randomly, simulating Genetic Algorithm diversity.
-- **Move Resolution**: Damage rules based on the current moves of both players:
-  - Punch/Kick deals damage unless blocked.
-  - Player and AI HP decrements accordingly.
+The AI employs a **Genetic Algorithm** to generate optimized move strategies. The algorithm evaluates each move sequence for fitness, applies diversity penalties, and evolves over multiple generations to create a competitive AI player. Human interaction is enabled through keyboard inputs, with simultaneous move resolution between the player and AI.  
 
-#### **Visualization**
-The game includes:
-- Graphical representation of fighters using rectangles.
-- Text-based display of HP for both player and AI.
-- Result display at the end of the game indicating victory, loss, or draw.
+## Methodology  
 
-#### **Conclusion**
-This project successfully applies Genetic Algorithm-like random move generation for AI in a combat simulation. The randomness adds unpredictability, making the AI challenging. Future improvements could include:
-- Adding more complex AI strategies based on historical player moves.
-- Including a mutation mechanism to adapt AI behavior over time.
-- Incorporating dynamic visualization of Genetic Algorithm convergence.
+### Initialization  
+- The game is built using **Pygame**, with a custom game window, clock, and font setup.  
+- A log file records the optimization process for AI moves.  
 
-#### **Inline Comments in Code**
-The script includes inline comments explaining the logic for:
-- Class methods (`draw`, `perform_move`).
-- AI move generation (`generate_ai_moves`).
-- Player and AI move resolution logic.
-- Key Pygame mechanics for updating the game window.
+### Fighter Class  
+- **Attributes**: Tracks each fighter’s health points (HP), current move, and cooldown.  
+- **Methods**: Handles visual representation and move execution.  
 
-#### **Inputs and Outputs**
-- **Inputs**: Keyboard controls (`A`, `S`, `D`) for player moves.
-- **Outputs**: Graphical game state, health bars, and a final result message.
+### AI Move Generation  
+- **Population**: AI strategies are initialized as a population of random move sequences.  
+- **Fitness Evaluation**: Each strategy is scored based on its effectiveness in combat and penalized for move repetition or excessive similarity to other strategies.  
+- **Evolution**: Crossover and mutation mechanisms create new strategies, dynamically adjusting mutation rates over generations.  
 
+### Combat Resolution  
+- **Simultaneous Moves**: Both player and AI perform moves simultaneously.  
+- **Damage Logic**: Move combinations determine damage dealt based on rules (e.g., attacks are blocked if countered with "Block").  
+- **Cooldown**: Ensures realistic pacing by introducing delays between consecutive moves.  
+
+## Results  
+
+The project achieves a dynamic, turn-based combat experience with:  
+1. **Interactive Gameplay**: Players control their moves using keyboard inputs.  
+2. **Evolving AI**: AI adapts over generations to execute optimized and diverse strategies.  
+3. **Balanced Mechanics**: Damage and cooldown mechanics create a fair challenge for players.  
+
+## Code Highlights  
+
+### Genetic Algorithm:  
+- **Dynamic Mutation Rate**: The mutation rate decreases over generations, mimicking real-world evolution.  
+- **Diversity Promotion**: Similar move sequences are penalized to encourage varied strategies.  
+
+### Combat Mechanics:  
+- **Simultaneous Moves**: Both fighters perform moves at the same time, adding realism.  
+- **Health Tracking**: The game ends when either player’s HP reaches zero.  
+
+### AI Strategy Optimization:  
+- **Fitness Evaluation**: Strategies are scored based on inflicted damage and diversity.  
+- **Evolutionary Steps**: Top strategies are selected, crossed, and mutated for improvement.  
+
+## Visualization  
+
+The game features:  
+- **Graphical Fighter Representation**: Fighters are displayed as rectangles with associated moves shown above them.  
+- **Health Indicators**: HP for both players is displayed on the screen.  
+- **Final Result Screen**: Indicates whether the player won or lost after the game ends.  
+
+## Conclusion  
+
+This project effectively applies **Genetic Algorithm principles** to create a competitive and challenging AI opponent. The diversity-driven optimization ensures varied gameplay, while the combat mechanics provide a fair balance between player and AI.  
+
+### Future Improvements:  
+1. Incorporate **real-time learning** for the AI to adapt during gameplay.  
+2. Implement more advanced move interactions, such as counterattacks and combos.  
+3. Enhance visualization with animations and effects for moves.  
+
+## Inline Comments in Code  
+
+The code includes comprehensive inline comments for clarity on:  
+- **Genetic Algorithm Steps**: Explains each stage of initialization, evaluation, selection, crossover, and mutation.  
+- **Combat Mechanics**: Describes damage rules, cooldown implementation, and simultaneous move resolution.  
+- **Pygame Components**: Details the drawing of fighters, health bars, and updating the display.  
+
+## Inputs and Outputs  
+
+### Inputs  
+- **Player Inputs**:  
+  - `A`: Punch  
+  - `S`: Kick  
+  - `D`: Block  
+  - `Q`: Uppercut  
+  - `W`: Roundhouse Kick  
+  - `E`: Low Kick  
+  - `R`: Grab  
+  - `T`: Dodge  
+
+### Outputs  
+- **On-Screen Visualization**: Fighter positions, current moves, and health bars.  
+- **Final Result**: Displays a win/lose message upon game completion.  
+- **Log File**: Records the AI optimization process across generations.  
