@@ -252,3 +252,14 @@ while run:
 # Update the display
     pygame.display.update()
     clock.tick(30)
+
+# Display game over message
+screen.fill(WHITE)
+if player.hp <= 0:
+    result_text = font.render("You Lost! AI Wins.", True, RED)
+elif ai.hp <= 0:
+    result_text = font.render("You Win! AI Defeated.", True, BLUE)
+screen.blit(result_text, (WIDTH // 2 - result_text.get_width() // 2, HEIGHT // 2))
+pygame.display.update()
+pygame.time.delay(3000)
+pygame.quit()
