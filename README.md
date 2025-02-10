@@ -1,4 +1,4 @@
-# Genetic-Kombat  
+# Genetic-Kombat (A Fighting Game Using Genetic Algorithm)  
 
 ## Abstract  
 
